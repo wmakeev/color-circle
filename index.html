@@ -167,7 +167,7 @@
       const SECTORS = 24
 
       const LEVEL1_INNER_RADUIS = 80 * SCALE
-      const LEVEL_HEIGHT = 70 * SCALE
+      const LEVEL1_HEIGHT = 70 * SCALE
 
       const RADIAN = Math.PI / 180
 
@@ -260,7 +260,6 @@
       ctx.font = `${FONT_SIZE}px Roboto`
       ctx.textAlign = 'center'
       ctx.textBaseline = 'middle'
-
       ctx.strokeStyle = 'black'
       ctx.lineWidth = Math.round(1 * SCALE)
 
@@ -272,8 +271,8 @@
 
       for (let level = 0; level < LEVELS; level++) {
         if (level === 0) {
-          r1 = LEVEL1_INNER_RADUIS + level * LEVEL_HEIGHT
-          r2 = r1 + LEVEL_HEIGHT
+          r1 = LEVEL1_INNER_RADUIS + level * LEVEL1_HEIGHT
+          r2 = r1 + LEVEL1_HEIGHT
         } else {
           const radius3 = Math.sqrt(2 * Math.pow(r2, 2) - Math.pow(r1, 2))
           r1 = r2
