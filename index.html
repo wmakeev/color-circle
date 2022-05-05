@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html>
+  <body>
+    <canvas
+      id="myCanvas"
+      width="3000"
+      height="3000"
+      style="border: 1px solid #d3d3d3"
+    >
+      Your browser does not support the HTML canvas tag.
+    </canvas>
+
+    <script>
+      const colors = [
+        [
+          ['rgb(117, 0, 0)', 'white'],
+          ['rgb(97, 48, 0)', 'white'],
+          ['rgb(87, 56, 0)', 'white'],
+          ['rgb(71, 61, 0)', 'white'],
+          ['rgb(61, 61, 0)', 'white'],
+          ['rgb(59, 66, 0)', 'white'],
+          ['rgb(48, 71, 0)', 'white'],
+          ['rgb(37, 77, 0)', 'white'],
+          ['rgb(0, 77, 0)', 'white'],
+          ['rgb(0, 77, 26)', 'white'],
+          ['rgb(0, 82, 48)', 'white'],
+          ['rgb(0, 77, 61)', 'white'],
+          ['rgb(0, 77, 77)', 'white'],
+          ['rgb(0, 65, 77)', 'white'],
+          ['rgb(0, 57, 97)', 'white'],
+          ['rgb(0, 45, 117)', 'white'],
+          ['rgb(0, 0, 128)', 'white'],
+          ['rgb(53, 0, 128)', 'white'],
+          ['rgb(78, 0, 117)', 'white'],
+          ['rgb(89, 0, 107)', 'white'],
+          ['rgb(102, 0, 102)', 'white'],
+          ['rgb(107, 0, 86)', 'white'],
+          ['rgb(112, 0, 75)', 'white'],
+          ['rgb(117, 0, 53)', 'white']
+        ],
+        [
+          ['rgb(179, 0, 0)', 'white'],
+          ['rgb(168, 84, 0)', 'white'],
+          ['rgb(153, 102, 0)', 'white'],
+          ['rgb(138, 115, 0)', 'white'],
+          ['rgb(133, 133, 0)', 'white'],
+          ['rgb(115, 133, 0)', 'white'],
+          ['rgb(95, 143, 0)', 'white'],
+          ['rgb(71, 143, 0)', 'white'],
+          ['rgb(0, 163, 0)', 'white'],
+          ['rgb(0, 153, 51)', 'white'],
+          ['rgb(0, 148, 86)', 'white'],
+          ['rgb(0, 143, 114)', 'white'],
+          ['rgb(0, 138, 138)', 'white'],
+          ['rgb(0, 128, 153)', 'white'],
+          ['rgb(0, 98, 168)', 'white'],
+          ['rgb(0, 68, 179)', 'white'],
+          ['rgb(0, 0, 179)', 'white'],
+          ['rgb(74, 0, 179)', 'white'],
+          ['rgb(119, 0, 179)', 'white'],
+          ['rgb(149, 0, 179)', 'white'],
+          ['rgb(168, 0, 168)', 'white'],
+          ['rgb(179, 0, 143)', 'white'],
+          ['rgb(179, 0, 119)', 'white'],
+          ['rgb(179, 0, 80)', 'white']
+        ],
+        [
+          ['rgb(255, 0, 0)', 'black'],
+          ['rgb(255, 128, 0)', 'black'],
+          ['rgb(219, 146, 0)', 'black'],
+          ['rgb(204, 170, 0)', 'black'],
+          ['rgb(189, 189, 0)', 'black'],
+          ['rgb(172, 199, 0)', 'black'],
+          ['rgb(136, 204, 0)', 'black'],
+          ['rgb(102, 204, 0)', 'black'],
+          ['rgb(0, 209, 0)', 'black'],
+          ['rgb(0, 199, 66)', 'black'],
+          ['rgb(0, 199, 116)', 'black'],
+          ['rgb(0, 199, 159)', 'black'],
+          ['rgb(0, 189, 189)', 'black'],
+          ['rgb(0, 170, 204)', 'black'],
+          ['rgb(0, 149, 255)', 'black'],
+          ['rgb(0, 98, 255)', 'white'],
+          ['rgb(0, 0, 255)', 'white'],
+          ['rgb(106, 0, 255)', 'white'],
+          ['rgb(170, 0, 255)', 'white'],
+          ['rgb(212, 0, 255)', 'white'],
+          ['rgb(255, 0, 255)', 'black'],
+          ['rgb(255, 0, 204)', 'black'],
+          ['rgb(255, 0, 170)', 'black'],
+          ['rgb(255, 0, 115)', 'black']
+        ],
+        [
+          ['rgb(255, 128, 128)', 'black'],
+          ['rgb(255, 186, 117)', 'black'],
+          ['rgb(255, 182, 36)', 'black'],
+          ['rgb(255, 213, 0)', 'black'],
+          ['rgb(255, 255, 0)', 'black'],
+          ['rgb(221, 255, 0)', 'black'],
+          ['rgb(170, 255, 0)', 'black'],
+          ['rgb(128, 255, 0)', 'black'],
+          ['rgb(0, 255, 0)', 'black'],
+          ['rgb(0, 255, 85)', 'black'],
+          ['rgb(0, 255, 149)', 'black'],
+          ['rgb(0, 255, 204)', 'black'],
+          ['rgb(0, 255, 255)', 'black'],
+          ['rgb(0, 213, 255)', 'black'],
+          ['rgb(110, 187, 242)', 'black'],
+          ['rgb(128, 176, 255)', 'black'],
+          ['rgb(128, 128, 255)', 'black'],
+          ['rgb(181, 128, 255)', 'black'],
+          ['rgb(213, 128, 255)', 'black'],
+          ['rgb(235, 138, 255)', 'black'],
+          ['rgb(255, 153, 255)', 'black'],
+          ['rgb(255, 138, 232)', 'black'],
+          ['rgb(255, 128, 213)', 'black'],
+          ['rgb(255, 128, 185)', 'black']
+        ],
+        [
+          ['rgb(255, 204, 204)', 'black'],
+          ['rgb(255, 219, 184)', 'black'],
+          ['rgb(255, 228, 173)', 'black'],
+          ['rgb(255, 241, 173)', 'black'],
+          ['rgb(255, 255, 168)', 'black'],
+          ['rgb(242, 255, 168)', 'black'],
+          ['rgb(226, 255, 168)', 'black'],
+          ['rgb(204, 255, 153)', 'black'],
+          ['rgb(153, 255, 153)', 'black'],
+          ['rgb(153, 255, 187)', 'black'],
+          ['rgb(148, 255, 210)', 'black'],
+          ['rgb(148, 255, 234)', 'black'],
+          ['rgb(148, 255, 255)', 'black'],
+          ['rgb(153, 238, 255)', 'black'],
+          ['rgb(163, 217, 255)', 'black'],
+          ['rgb(179, 208, 255)', 'black'],
+          ['rgb(189, 189, 255)', 'black'],
+          ['rgb(215, 189, 255)', 'black'],
+          ['rgb(232, 189, 255)', 'black'],
+          ['rgb(244, 189, 255)', 'black'],
+          ['rgb(255, 189, 255)', 'black'],
+          ['rgb(255, 189, 242)', 'black'],
+          ['rgb(255, 189, 232)', 'black'],
+          ['rgb(255, 194, 222)', 'black']
+        ]
+      ]
+      const canvas = document.getElementById('myCanvas')
+      const canvasMaxSize = Math.min(canvas.width, canvas.height)
+
+      const SCALE = 5
+      const FONT_SIZE = Math.round(10 * SCALE)
+
+      const LEVELS = colors.length
+      const LEVEL1_INNER_RADUIS = 80 * SCALE
+      const LEVEL_HEIGHT = 70 * SCALE
+      const SECTORS = colors[0].length
+
+      const RADIAN = Math.PI / 180
+
+      const getLineCoord = ({ centerX, centerY, radius1, radius2, angle }) => {
+        const angle1Cos = Math.cos(angle)
+        const angle1Sin = Math.sin(angle)
+
+        return {
+          x1: angle1Cos * radius1 + centerX,
+          y1: angle1Sin * radius1 + centerY,
+          x2: angle1Cos * radius2 + centerX,
+          y2: angle1Sin * radius2 + centerY
+        }
+      }
+
+      const getPointCoord = ({ centerX, centerY, radius, angle }) => {
+        const angleCos = Math.cos(angle)
+        const angleSin = Math.sin(angle)
+
+        return {
+          x: angleCos * radius + centerX,
+          y: angleSin * radius + centerY
+        }
+      }
+
+      const drawSector = (
+        ctx,
+        {
+          caption,
+          centerX,
+          centerY,
+          radius1,
+          radius2,
+          angle1,
+          angle2,
+          backgroundColor,
+          captionColor
+        }
+      ) => {
+        const side1 = getLineCoord({
+          centerX,
+          centerY,
+          radius1,
+          radius2,
+          angle: angle1
+        })
+
+        const side2 = getLineCoord({
+          centerX,
+          centerY,
+          radius1,
+          radius2,
+          angle: angle2
+        })
+
+        ctx.beginPath()
+
+        ctx.moveTo(side1.x1, side1.y1)
+
+        ctx.lineTo(side1.x2, side1.y2)
+
+        ctx.arc(centerX, centerY, radius2, angle1, angle2)
+
+        ctx.moveTo(side1.x1, side1.y1)
+
+        ctx.arc(centerX, centerY, radius1, angle1, angle2)
+
+        ctx.lineTo(side2.x2, side2.y2)
+
+        const cectorCenterPoint = getPointCoord({
+          centerX,
+          centerY,
+          radius: (radius1 + radius2) / 2,
+          angle: (angle1 + angle2) / 2
+        })
+
+        ctx.fillStyle = backgroundColor
+
+        ctx.fill()
+
+        ctx.fillStyle = captionColor
+
+        ctx.fillText(caption, cectorCenterPoint.x, cectorCenterPoint.y)
+
+        ctx.stroke()
+      }
+
+      const ctx = canvas.getContext('2d')
+
+      ctx.font = `${FONT_SIZE}px Arial`
+      ctx.textAlign = 'center'
+      ctx.textBaseline = 'middle'
+
+      ctx.strokeStyle = 'black'
+      ctx.lineWidth = Math.round(1 * SCALE)
+
+      const centerX = canvasMaxSize / 2
+      const centerY = canvasMaxSize / 2
+
+      let r1
+      let r2
+
+      for (let level = 0; level < LEVELS; level++) {
+        if (level === 0) {
+          r1 = LEVEL1_INNER_RADUIS + level * LEVEL_HEIGHT
+          r2 = r1 + LEVEL_HEIGHT
+        } else {
+          const radius3 = Math.sqrt(2 * Math.pow(r2, 2) - Math.pow(r1, 2))
+          r1 = r2
+          r2 = radius3
+        }
+
+        for (let sector = 0; sector < SECTORS; sector++) {
+          const angelStep = 360 / SECTORS
+          const angle = angelStep * (sector - 0.5) - 90
+
+          const backgroundColor = colors[level][sector][0]
+          const captionColor = colors[level][sector][1]
+
+          const caption = level * SECTORS + sector + 1
+
+          drawSector(ctx, {
+            caption,
+            centerX,
+            centerY,
+            radius1: r1,
+            radius2: r2,
+            angle1: angle * RADIAN,
+            angle2: (angle + angelStep) * RADIAN,
+            backgroundColor,
+            captionColor
+          })
+        }
+      }
+    </script>
+  </body>
+</html>
